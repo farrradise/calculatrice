@@ -1,10 +1,8 @@
+// toutes les variables
 var leChiffre = document.getElementsByClassName("chiffre");
 var operateur = document.getElementsByClassName('operateur');
 var displayResult = document.getElementsByTagName("th")[0];
-var nbrTemp="";
-var nbr1 ="";
-var nbr2 ="";
-var ope = "";
+var nbrTemp="", nbr1 ="", nbr2 ="", ope = "";
 
 // pour parcourir le tableau au clic d'un chiffre
 for (let i = 0; i < leChiffre.length; i++) {
@@ -65,7 +63,7 @@ function calcul(number1, operator, number2) {
 }
 
 
-// fonction pour le =
+// fonction pour le '=' onclick
 document.getElementById("egal").addEventListener("click", function () { quandAppuiSurEgal();});
 
 function quandAppuiSurEgal() {
