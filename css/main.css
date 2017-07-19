@@ -1,14 +1,47 @@
+body {
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  background-color: gray;
+}
+
+
 th {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: lightgray;
   text-align: right;
   padding-right: 20px;
 }
 
 th, td {
-  height: 50px;
-  width: 50px;
-  border: 1px solid red;
+  height: 60px;
+  width: 60px;
+  border: 1.5px solid lightgray;
+  /*border: 0.5px solid gray;*/
+}
+
+table {
+  background-color: white;
+  box-shadow: 1px 1px 2px lightgray;
+  border: 1px solid black!important;
 }
 
 td {
   text-align: center;
+  transition: 0.1s;
+}
+
+td:hover {
+  /*border: 1px solid gray;*/
+  background-color: lightgray;
+}
+
+td:active {
+  /*border: 1.5px solid white;*/
+  background-color: lightblue;
+}
+
+.chiffre:active {
+  background-color: pink;
 }

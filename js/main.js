@@ -1,0 +1,1 @@
+document.getElementsByClassName("chiffre").addEventListener
