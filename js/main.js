@@ -20,11 +20,18 @@ function afficheChiffre (th, index) {
   nbrTemp += leChiffre[index].textContent;
   displayResult.innerHTML = nbrTemp;
 
+  // pour eviter le double emploi d'une virgule
+  for (k=0; k < nbrTemp.length;k++) {
+      if (nbrTemp[k] == ".") {
+        document.getElementById("point").style.pointerEvents = "none";
+      }
+  }
+
     for (let j = 0; j < operateur.length; j++) {
-        operateur[j].addEventListener("click", function() {
-            allowOperateur(this);
-        });
-    }
+      operateur[j].addEventListener("click", function() {
+        allowOperateur(this);
+      });
+  }
 }
 
 //fonction pour cliquer et afficher les opérateurs
@@ -38,6 +45,7 @@ function allowOperateur(th) {
     case "-": ope ="-"; break;
     case "×": ope ="*"; break;
     case "÷": ope ="/"; break;
+    case "=": ope=""; break;
     default:
   }
 }
@@ -48,6 +56,7 @@ function operation() {
   if (nbr1=="") {
     nbr1 = nbrTemp;
     nbrTemp ="";
+    document.getElementById("point").style.pointerEvents = "inherit";
   } else if (ope=="") {
     displayResult.innerHTML = nbr1;
   } else {
@@ -61,7 +70,8 @@ function operation() {
 function calcul(number1, operator, number2) {
   nbr1 = eval(number1 + operator + number2);
   displayResult.innerHTML = nbr1;
-  // ope="";
+  document.getElementById("point").style.pointerEvents = "inherit";
+  // rajouter le bug des décimal à 5
 }
 
 
@@ -69,9 +79,10 @@ function calcul(number1, operator, number2) {
 document.getElementById("egal").addEventListener("click", function () { quandAppuiSurEgal();});
 
 function quandAppuiSurEgal() {
-  calcul(nbr1, ope, nbrTemp);
-  // alert(nbr1);
-  // alert(nbrTemp);
-  // alert(ope);
-  // alert("test");
+  if (nbr1=="") {
+    displayResult.innerHTML=nbr1;
+  } else {
+    calcul(nbr1, ope, nbr2);
+    // document.getElementById("point").style.pointerEvents = "inherit";
+  }
 }
