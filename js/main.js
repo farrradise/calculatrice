@@ -2,7 +2,7 @@
 var leChiffre = document.getElementsByClassName("chiffre");
 var operateur = document.getElementsByClassName('operateur');
 var displayResult = document.getElementsByTagName("th")[0];
-var nbrTemp="", nbr1 ="", nbr2 ="", ope = "";
+var nbrTemp="", nbr1 ="", nbr2 ="", ope = ""; opeTemp ="";
 
 // pour parcourir le tableau au clic d'un chiffre
 for (let i = 0; i < leChiffre.length; i++) {
@@ -29,6 +29,8 @@ function afficheChiffre (th, index) {
 
 //fonction pour cliquer et afficher les opérateurs
 function allowOperateur(th) {
+  operation();
+
   ope = th.textContent;
 
   switch (ope) {
@@ -36,10 +38,8 @@ function allowOperateur(th) {
     case "-": ope ="-"; break;
     case "×": ope ="*"; break;
     case "÷": ope ="/"; break;
-    // case "=": ope ="="; break;
     default:
   }
-    operation();
 }
 
 
@@ -48,6 +48,8 @@ function operation() {
   if (nbr1=="") {
     nbr1 = nbrTemp;
     nbrTemp ="";
+  } else if (ope=="") {
+    displayResult.innerHTML = nbr1;
   } else {
     nbr2 = nbrTemp;
     nbrTemp = "";
