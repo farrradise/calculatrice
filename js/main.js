@@ -69,20 +69,24 @@ function operation() {
 // fonction pour faire le calcul
 function calcul(number1, operator, number2) {
   nbr1 = eval(number1 + operator + number2);
-  displayResult.innerHTML = nbr1;
   document.getElementById("point").style.pointerEvents = "inherit";
-  // rajouter le bug des décimal à 5
+// rajouter le bug des décimal à 5
+  var leTest = nbr1.toString().length;
+  if (leTest > 10) {
+    // la c'est pas hyper correct correct vu que je devrais mettre une condition pour tester la partie décimale uniquement
+    nbr1 = nbr1.toFixed(2);
+  }
+  displayResult.innerHTML = nbr1;
 }
 
 
 // fonction pour le '=' onclick
-document.getElementById("egal").addEventListener("click", function () { quandAppuiSurEgal();});
+document.getElementById("egal").addEventListener("click",quandAppuiSurEgal());
 
 function quandAppuiSurEgal() {
   if (nbr1=="") {
     displayResult.innerHTML=nbr1;
   } else {
     calcul(nbr1, ope, nbr2);
-    // document.getElementById("point").style.pointerEvents = "inherit";
   }
 }
